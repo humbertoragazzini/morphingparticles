@@ -116,6 +116,13 @@ gltfLoader.load("./models.glb", (gltf) => {
   console.log(particles.maxCount);
   console.log(positions);
 
+  particles.positions = [];
+
+  for (const position of positions) {
+    const originalArray = position.array;
+    const newArray = new Float32Array(particles.maxCount * 3);
+  }
+
   // Geometry
   particles.geometry = new THREE.SphereGeometry(3);
   particles.geometry.setIndex(null);
