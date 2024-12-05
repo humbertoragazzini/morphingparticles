@@ -106,6 +106,14 @@ gltfLoader.load("./models.glb", (gltf) => {
     return child.geometry.attributes.position;
   });
 
+  particles.maxCount = 0;
+
+  for (let i = 0; i < positions.length; i++) {
+    if (particles.maxCount < positions[i].count) {
+      particles.maxCount = positions[i].count;
+    }
+  }
+  console.log(particles.maxCount);
   console.log(positions);
 
   // Geometry
