@@ -141,7 +141,7 @@ gltfLoader.load("./models.glb", (gltf) => {
     particles.positions.push(new THREE.Float32BufferAttribute(newArray, 3));
   }
 
-  console.log(particles.positions);
+  console.log(particles.positions );
 
   // Geometry
   particles.geometry = new THREE.SphereGeometry(3);
