@@ -124,18 +124,17 @@ gltfLoader.load("./models.glb", (gltf) => {
 
     for (let i = 0; i < particles.maxCount; i++) {
       const i3 = i * 3;
+      const i31 = i3 + 1;
+      const i32 = i31 + 1;
       if (i3 < originalArray.length) {
-        const i31 = i3 + 1;
-        const i32 = i31 + 1;
         newArray[i3] = originalArray[i3];
         newArray[i31] = originalArray[i31];
         newArray[i32] = originalArray[i32];
       } else {
-        const i31 = i3 + 1;
-        const i32 = i31 + 1;
-        newArray[i3] = 0;
-        newArray[i31] = 0;
-        newArray[i32] = 0;
+        const randomePosition = Math.floor(position.count * Math.random());
+        newArray[i3] = originalArray[i3 + randomePosition];
+        newArray[i31] = originalArray[i31 + randomePosition];
+        newArray[i32] = originalArray[i32 + randomePosition];
       }
     }
     particles.positions.push(new THREE.Float32BufferAttribute(newArray, 3));
