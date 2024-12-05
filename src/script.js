@@ -141,11 +141,11 @@ gltfLoader.load("./models.glb", (gltf) => {
     particles.positions.push(new THREE.Float32BufferAttribute(newArray, 3));
   }
 
-  console.log(particles.positions );
+  console.log(particles.positions);
 
   // Geometry
-  particles.geometry = new THREE.SphereGeometry(3);
-  particles.geometry.setIndex(null);
+  particles.geometry = new THREE.BufferGeometry();
+  particles.geometry.setAttribute("position", particles.positions[1]);
 
   // Material
   particles.material = new THREE.ShaderMaterial({
