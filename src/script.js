@@ -91,32 +91,40 @@ gui.addColor(debugObject, "clearColor").onChange(() => {
 renderer.setClearColor(debugObject.clearColor);
 
 /**
- * Particles
+ * load 3d models
  */
-const particles = {};
 
-// Geometry
-particles.geometry = new THREE.SphereGeometry(3);
+gltfLoader.load("./models.glb", (gltf) => {
+  /**
+   * Particles
+   */
+  const particles = {};
 
-// Material
-particles.material = new THREE.ShaderMaterial({
-  vertexShader: particlesVertexShader,
-  fragmentShader: particlesFragmentShader,
-  uniforms: {
-    uSize: new THREE.Uniform(0.4),
-    uResolution: new THREE.Uniform(
-      new THREE.Vector2(
-        sizes.width * sizes.pixelRatio,
-        sizes.height * sizes.pixelRatio
-      )
-    ),
-  },
-  blending: THREE.AdditiveBlending,
+  // Geometry
+  particles.geometry = new THREE.SphereGeometry(3);
+  particles.geometry.setIndex(null);
+
+  // Material
+  particles.material = new THREE.ShaderMaterial({
+    vertexShader: particlesVertexShader,
+    fragmentShader: particlesFragmentShader,
+    uniforms: {
+      uSize: new THREE.Uniform(0.4),
+      uResolution: new THREE.Uniform(
+        new THREE.Vector2(
+          sizes.width * sizes.pixelRatio,
+          sizes.height * sizes.pixelRatio
+        )
+      ),
+    },
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+
+  // Points
+  particles.points = new THREE.Points(particles.geometry, particles.material);
+  scene.add(particles.points);
 });
-
-// Points
-particles.points = new THREE.Points(particles.geometry, particles.material);
-scene.add(particles.points);
 
 /**
  * Animate
