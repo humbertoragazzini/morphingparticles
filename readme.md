@@ -26,7 +26,7 @@ In this mini project we apply custom vertex shader to particles build from glbs 
 3. In this tab select settings.
 4. Click in pages in the option menu.
 5. Select in source branch master.
-6. Save, the project is deployed in github pages in the following link:[The Raging Sea](https://humbertoragazzini.github.io/morphingparticles/dist/)
+6. Save, the project is deployed in github pages in the following link:[Particles morphing](https://humbertoragazzini.github.io/morphingparticles/dist/)
 
 ## **To clone my repository in github**
 
