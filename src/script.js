@@ -93,12 +93,20 @@ renderer.setClearColor(debugObject.clearColor);
 /**
  * load 3d models
  */
+let particles = null;
 
 gltfLoader.load("./models.glb", (gltf) => {
   /**
    * Particles
    */
-  const particles = {};
+  particles = {};
+
+  // extracting positions from the gltf
+  const positions = gltf.scene.children.map((child) => {
+    return child.geometry.attributes.position;
+  });
+
+  console.log(positions);
 
   // Geometry
   particles.geometry = new THREE.SphereGeometry(3);
