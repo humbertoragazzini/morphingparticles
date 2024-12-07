@@ -1,10 +1,16 @@
 uniform vec2 uResolution;
 uniform float uSize;
+attribute vec3 aPositionTarget;
 
 void main()
 {
+
+    // Mixing positions
+    float mixFactor = 0.5;
+    vec3 mixPositions = mix(position, aPositionTarget, mixFactor);
+
     // Final position
-    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    vec4 modelPosition = modelMatrix * vec4(mixPositions, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
     gl_Position = projectedPosition;

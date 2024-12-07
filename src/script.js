@@ -131,10 +131,13 @@ gltfLoader.load("./models.glb", (gltf) => {
         newArray[i31] = originalArray[i31];
         newArray[i32] = originalArray[i32];
       } else {
-        const randomePosition = Math.floor(position.count * Math.random());
-        newArray[i3] = originalArray[i3 + randomePosition];
-        newArray[i31] = originalArray[i31 + randomePosition];
-        newArray[i32] = originalArray[i32 + randomePosition];
+        const randomePosition = Math.floor(position.count * Math.random()) * 3;
+        // newArray[i3] = originalArray[i3 + randomePosition];
+        // newArray[i31] = originalArray[i31 + randomePosition];
+        // newArray[i32] = originalArray[i32 + randomePosition];
+        newArray[i3] = originalArray[randomePosition];
+        newArray[i31] = originalArray[randomePosition + 1];
+        newArray[i32] = originalArray[randomePosition + 2];
       }
     }
     particles.positions.push(new THREE.Float32BufferAttribute(newArray, 3));
@@ -145,13 +148,14 @@ gltfLoader.load("./models.glb", (gltf) => {
   // Geometry
   particles.geometry = new THREE.BufferGeometry();
   particles.geometry.setAttribute("position", particles.positions[1]);
+  particles.geometry.setAttribute("aPositionTarget", particles.positions[3]);
 
   // Material
   particles.material = new THREE.ShaderMaterial({
     vertexShader: particlesVertexShader,
     fragmentShader: particlesFragmentShader,
     uniforms: {
-      uSize: new THREE.Uniform(0.4),
+      uSize: new THREE.Uniform(0.2),
       uResolution: new THREE.Uniform(
         new THREE.Vector2(
           sizes.width * sizes.pixelRatio,
