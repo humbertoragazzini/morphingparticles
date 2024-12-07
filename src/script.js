@@ -101,6 +101,8 @@ gltfLoader.load("./models.glb", (gltf) => {
    */
   particles = {};
 
+  particles.index = 0;
+
   // extracting positions from the gltf
   const positions = gltf.scene.children.map((child) => {
     return child.geometry.attributes.position;
@@ -147,7 +149,10 @@ gltfLoader.load("./models.glb", (gltf) => {
 
   // Geometry
   particles.geometry = new THREE.BufferGeometry();
-  particles.geometry.setAttribute("position", particles.positions[1]);
+  particles.geometry.setAttribute(
+    "position",
+    particles.positions[particles.index]
+  );
   particles.geometry.setAttribute("aPositionTarget", particles.positions[3]);
 
   // Material
@@ -172,6 +177,17 @@ gltfLoader.load("./models.glb", (gltf) => {
   particles.points = new THREE.Points(particles.geometry, particles.material);
   scene.add(particles.points);
 
+  // method
+  particles.morph = (index) => {
+    // update attributes
+    particles.geometry.attributes.position =
+      particles.positions[particles.index];
+    particles.geometry.attributes.aPositionTarget = particles.positions[index];
+
+    // animate mixFactor
+  };
+
+  // tweaks
   gui
     .add(particles.material.uniforms.uMixFactor, "value")
     .min(0)

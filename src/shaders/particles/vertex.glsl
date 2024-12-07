@@ -7,7 +7,9 @@ varying  vec3 vColor;
 
 void main()
 {
-    float noise = simplexNoise3d(position);
+    float noiseOrigin = simplexNoise3d(position * 0.2);
+    float noiseTarget = simplexNoise3d(aPositionTarget * 0.2);
+    float noise = mix(noiseOrigin,noiseTarget,uMixFactor);
     noise = smoothstep(-1.0,1.0,noise);
 
     // delay and duration calculation
@@ -18,7 +20,6 @@ void main()
     // Mixing positions
     float mixFactor = smoothstep(delay, end, uMixFactor);
     vec3 mixPositions = mix(position, aPositionTarget, mixFactor);
-
 
     // Final position
     vec4 modelPosition = modelMatrix * vec4(mixPositions, 1.0);
