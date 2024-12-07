@@ -1,6 +1,7 @@
 uniform vec2 uResolution;
 uniform float uSize;
 attribute vec3 aPositionTarget;
+attribute float aSizes;
 uniform float uMixFactor;
 #include ../includes/simpleNoise.glsl
 varying  vec3 vColor;
@@ -28,7 +29,7 @@ void main()
     gl_Position = projectedPosition;
 
     // Point size
-    gl_PointSize = uSize * uResolution.y;
+    gl_PointSize = uSize * uResolution.y * aSizes;
     gl_PointSize *= (1.0 / - viewPosition.z);
 
     // update varying

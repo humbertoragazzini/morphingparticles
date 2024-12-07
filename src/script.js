@@ -118,6 +118,13 @@ gltfLoader.load("./models.glb", (gltf) => {
   console.log(particles.maxCount);
   console.log(positions);
 
+  // sizes oof the particles
+  const sizesArray = new Float32Array(particles.maxCount);
+
+  for (let i = 0; i < particles.maxCount; i++) {
+    sizesArray[i] = Math.random();
+  }
+
   particles.positions = [];
 
   for (const position of positions) {
@@ -154,6 +161,10 @@ gltfLoader.load("./models.glb", (gltf) => {
     particles.positions[particles.index]
   );
   particles.geometry.setAttribute("aPositionTarget", particles.positions[3]);
+  particles.geometry.setAttribute(
+    "aSizes",
+    new THREE.BufferAttribute(sizesArray, 1)
+  );
 
   // Material
   particles.material = new THREE.ShaderMaterial({
