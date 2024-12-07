@@ -185,6 +185,11 @@ gltfLoader.load("./models.glb", (gltf) => {
     particles.geometry.attributes.aPositionTarget = particles.positions[index];
 
     // animate mixFactor
+    gsap.fromTo(
+      particles.material.uniforms.uMixFactor,
+      { value: 0 },
+      { value: 1, duration: 3, ease: "lineal" }
+    );
   };
 
   // tweaks
