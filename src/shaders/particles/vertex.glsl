@@ -12,6 +12,7 @@ void main()
     // Mixing positions
     float mixFactor = uMixFactor;
     vec3 mixPositions = mix(position, aPositionTarget, mixFactor);
+    noise = smoothstep(-1.0,1.0,noise);
 
     // Final position
     vec4 modelPosition = modelMatrix * vec4(mixPositions, 1.0);
