@@ -1,12 +1,13 @@
 uniform vec2 uResolution;
 uniform float uSize;
 attribute vec3 aPositionTarget;
-uniform float mixFactor;
+uniform float uMixFactor;
 
 void main()
 {
 
     // Mixing positions
+    float mixFactor = uMixFactor;
     vec3 mixPositions = mix(position, aPositionTarget, mixFactor);
 
     // Final position

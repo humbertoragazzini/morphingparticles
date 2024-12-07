@@ -162,7 +162,7 @@ gltfLoader.load("./models.glb", (gltf) => {
           sizes.height * sizes.pixelRatio
         )
       ),
-      mixFactor: new THREE.Uniform(0),
+      uMixFactor: new THREE.Uniform(0),
     },
     blending: THREE.AdditiveBlending,
     depthWrite: false,
@@ -171,6 +171,13 @@ gltfLoader.load("./models.glb", (gltf) => {
   // Points
   particles.points = new THREE.Points(particles.geometry, particles.material);
   scene.add(particles.points);
+
+  gui
+    .add(particles.material.uniforms.uMixFactor, "value")
+    .min(0)
+    .max(1)
+    .step(0.001)
+    .name("mixFactor");
 });
 
 /**
