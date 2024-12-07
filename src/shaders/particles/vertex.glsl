@@ -3,6 +3,8 @@ uniform float uSize;
 attribute vec3 aPositionTarget;
 attribute float aSizes;
 uniform float uMixFactor;
+uniform vec3 uColorA;
+uniform vec3 uColorB;
 #include ../includes/simpleNoise.glsl
 varying  vec3 vColor;
 
@@ -33,5 +35,5 @@ void main()
     gl_PointSize *= (1.0 / - viewPosition.z);
 
     // update varying
-    vColor = vec3(noise);
+    vColor = mix(uColorA,uColorB,noise);
 }
