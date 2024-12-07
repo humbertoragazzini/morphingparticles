@@ -190,6 +190,22 @@ gltfLoader.load("./models.glb", (gltf) => {
       { value: 0 },
       { value: 1, duration: 3, ease: "lineal" }
     );
+
+    // particles index
+    particles.index = index;
+  };
+
+  particles.morph0 = () => {
+    particles.morph(0);
+  };
+  particles.morph1 = () => {
+    particles.morph(1);
+  };
+  particles.morph2 = () => {
+    particles.morph(2);
+  };
+  particles.morph3 = () => {
+    particles.morph(3);
   };
 
   // tweaks
@@ -199,8 +215,12 @@ gltfLoader.load("./models.glb", (gltf) => {
     .max(1)
     .step(0.001)
     .name("mixFactor");
-});
 
+  gui.add(particles, "morph0");
+  gui.add(particles, "morph1");
+  gui.add(particles, "morph2");
+  gui.add(particles, "morph3");
+});
 /**
  * Animate
  */
