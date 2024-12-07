@@ -167,6 +167,8 @@ gltfLoader.load("./models.glb", (gltf) => {
   );
 
   // Material
+  particles.colorA = "#ff0055";
+  particles.colorB = "#5500ff";
   particles.material = new THREE.ShaderMaterial({
     vertexShader: particlesVertexShader,
     fragmentShader: particlesFragmentShader,
@@ -179,6 +181,8 @@ gltfLoader.load("./models.glb", (gltf) => {
         )
       ),
       uMixFactor: new THREE.Uniform(0),
+      uColorA: new THREE.Color(particles.colorA),
+      uColorB: new THREE.Color(particles.colorB),
     },
     blending: THREE.AdditiveBlending,
     depthWrite: false,
@@ -231,6 +235,12 @@ gltfLoader.load("./models.glb", (gltf) => {
   gui.add(particles, "morph1");
   gui.add(particles, "morph2");
   gui.add(particles, "morph3");
+  gui.addColor(partciles, "colorA").onChange(() => {
+    particles.material.uniforms.uColorA.values.set(particles.colorA);
+  });
+  gui.addColor(partciles, "colorB").onChange(() => {
+    particles.material.uniforms.uColorA.values.set(particles.colorB);
+  });
 });
 /**
  * Animate
