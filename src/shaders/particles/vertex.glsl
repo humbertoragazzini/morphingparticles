@@ -2,6 +2,7 @@ uniform vec2 uResolution;
 uniform float uSize;
 attribute vec3 aPositionTarget;
 uniform float uMixFactor;
+#include ../includes/simpleNoise.glsl
 
 void main()
 {
