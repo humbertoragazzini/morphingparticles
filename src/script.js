@@ -162,6 +162,7 @@ gltfLoader.load("./models.glb", (gltf) => {
           sizes.height * sizes.pixelRatio
         )
       ),
+      mixFactor: new THREE.Uniform(0),
     },
     blending: THREE.AdditiveBlending,
     depthWrite: false,
