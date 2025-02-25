@@ -1,6 +1,6 @@
 # Particles morphing MiniProject - Humberto Ragazzini
 
-In this mini project we apply custom vertex shader to particles build from glbs exported with blender, from a current position to a next position extracted from the geometries, in this case we use pure THREEJS: [Particles morphing](https://humbertoragazzini.github.io/morphingparticles/dist/)
+In this mini project we apply custom vertex shader to particles build from glbs exported with blender, from a current position to a next position extracted from the geometries, in this case we use pure THREEJS: [Particles morphing](https://humbertoragazzini.github.io/morphingparticles/)
 
 # **Frameworks and Tecnologies**
 
@@ -26,7 +26,7 @@ In this mini project we apply custom vertex shader to particles build from glbs 
 3. In this tab select settings.
 4. Click in pages in the option menu.
 5. Select in source branch master.
-6. Save, the project is deployed in github pages in the following link:[Particles morphing](https://humbertoragazzini.github.io/morphingparticles/dist/)
+6. Save, the project is deployed in github pages in the following link:[Particles morphing](https://humbertoragazzini.github.io/morphingparticles/)
 
 ## **To clone my repository in github**
 
